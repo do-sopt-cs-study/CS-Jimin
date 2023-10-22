@@ -12,7 +12,8 @@
 
 ## 흐름 제어
 
-![](https://velog.velcdn.com/images/urjimyu/post/3a75dbc4-3878-4cf0-b3a5-2e51189979e1/image.png)
+<img src="https://velog.velcdn.com/images/urjimyu/post/3a75dbc4-3878-4cf0-b3a5-2e51189979e1/image.png" width="400" height="300"/>
+
 
 - 흐름 제어란 수신자 촉에 ACK를 받지 않은(즉 승인 받지 않은 상태로) 채 **많은 데이터를 보내는 것을 제어하기 위한 방법**이다. 수신자가 과도하게 많은 데이터를 받지 않도록 한다. 송신자와 수신자의 속도를 맞춰준다고 할 수 있다. OSI 계층 구조 중에서 data link 계층이 흐름 제어를 돕는다.
 
@@ -27,7 +28,8 @@
 
 - 가장 많이 쓰이는 흐름 제어 방법 중 하나
 
-![](https://velog.velcdn.com/images/urjimyu/post/bb82e775-1880-4870-a977-cae65949d517/image.png)
+
+<img src="https://velog.velcdn.com/images/urjimyu/post/bb82e775-1880-4870-a977-cae65949d517/image.png" width="400" height="300"/>
 
 > **Reciever window 수신 윈도우**
 > 현재 수신 가능한 수신 버퍼의 크기를 의미한다.
@@ -41,20 +43,22 @@
 
 - 수신 윈도우와 송신 윈도우 모두 크기는 변할 수 있다.
 
-![](https://velog.velcdn.com/images/urjimyu/post/eedf713a-a63b-4ed9-8cdc-6c3619922d8c/image.png)
+<img src="https://velog.velcdn.com/images/urjimyu/post/eedf713a-a63b-4ed9-8cdc-6c3619922d8c/image.png" width="400" height="300"/>
+
 
 - 윈도우 크기를 가지고 TCP는 ACK 없이 최대 몇 개의 데이터를 송신할 수 있는지 계산한다. 윈도우 크기가 0이면 0보다 커질 때까지 TCP는 데이터 전송을 멈춘다.
 
-![](https://velog.velcdn.com/images/urjimyu/post/f2568f23-6efb-4ea2-8550-50b218f61a4a/image.png)
+<img src="https://velog.velcdn.com/images/urjimyu/post/f2568f23-6efb-4ea2-8550-50b218f61a4a/image.png" width="300" height="150"/>
+
 
 1. Opening Window 윈도우 열기
    - 보낼 수 있는 만큼 데이터를 모두 보낸고 수신 측으로부터 ACK를 받으면 더 많은 패킷을 보낼 수 있도록 윈도우 크기를 증가시킨다.
 2. Closing Window 윈도우 닫기
    - 수신 윈도우가 가득 차 더 이상 세그먼트 수신이 불가할 때 송신 윈도우가 더이상 송신하지 않도록 하는 것
 
-![](https://velog.velcdn.com/images/urjimyu/post/a589127f-bb1e-4ff5-b225-401538d86f39/image.png)
+<img src="https://velog.velcdn.com/images/urjimyu/post/a589127f-bb1e-4ff5-b225-401538d86f39/image.png" width="300" height="200"/>
 
-- 위 사진과 같은 방식을 수신 측에서 더 받을 수 있는 데이터 양을 계산해서 보내주고, `receiveWindow=0`이 되면 윈도우를 닫는다.
+- 위 사진과 같은 방식으로 수신 측에서 더 받을 수 있는 데이터 양을 계산해서 보내주고, `receiveWindow=0`이 되면 윈도우를 닫는다.
 
 ⇒ `receiveWindow=0` 이후 수신자가 ACK를 안 보내면 발신자는 계속 전송 시작하기를 기다리고 수신자는 데이터가 더 오기를 기다리는 데드락(교착 상태) 위험이 있으므로 receiveWindow가 0일 때마다 TCP는 주기적으로 작은 패킷을 수신자에게 보내는 영구적인 타이머(Persist Timer)를 작동시킨다. 이를 WindowProbe라고도 한다.
 
@@ -65,7 +69,7 @@
 
 ## 혼잡 제어
 
-![](https://velog.velcdn.com/images/urjimyu/post/412f00b0-860a-41e2-a6d1-7cf189de792a/image.png)
+<img src="https://velog.velcdn.com/images/urjimyu/post/412f00b0-860a-41e2-a6d1-7cf189de792a/image.png" width="300" height="200"/>
 
 - 혼잡은 특정 링크에 제어 가능한 양보다 많은 패킷이 몰리는 경우 발생한다. 너무 많은 패킷들이 몰리면 많은 양의 패킷이 손실된다.
 - TCP의 문제 중 하나는 바로 송신자들이 특정 경로의 사용 가능한 대역폭을 알지 못한다는 점이다. 그래서 송신 측에서 왕복 시간마다 전송하는 패킷 양을 계속 늘려서 패킷이 얼마나 손실되었는지를 통해 대역폭을 추측하는 수밖에 없다.
@@ -74,7 +78,7 @@
 
 **1. Tahoe/Reno(80/90년대)**
 
-![](https://velog.velcdn.com/images/urjimyu/post/14a19632-8b48-49d1-bcea-bb401d3adc0e/image.png)
+<img src="https://velog.velcdn.com/images/urjimyu/post/14a19632-8b48-49d1-bcea-bb401d3adc0e/image.png" width="400" height="300"/>
 
 - 특정 임계값에 도달할 때까지 혼잡 윈도우 사이즈 기하급수적으로 늘리는 방식이다. 임계값 이후에는 선형적으로 늘린다.
 - 늘리다가 데이터 손실을 겪으면 윈도우 크기를 급격하게 줄이고 “slow start” 모드에 돌입해 천천히 임계값에 도달할 때까지 다시 윈도우 크기를 늘린다.
